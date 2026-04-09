@@ -1,10 +1,14 @@
 spring:
   cloud:
     gateway:
-      routes:
-        - id: test-route
-          uri: http://httpbin.org
-          predicates:
-            - Path=/test/**
-          filters:
-            - StripPrefix=1
+      server:
+        webflux:
+          routes:
+            - id: book-service
+              uri: lb://BOOKSERVICEB
+              predicates:
+                - Path=/books/**
+            - id: order-service
+              uri: lb://ORDERSERVICEA
+              predicates:
+                - Path=/orders/**

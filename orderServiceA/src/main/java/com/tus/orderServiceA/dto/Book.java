@@ -1,26 +1,14 @@
-package com.tus.bookServiceB.entity;
+package com.tus.orderServiceA.dto;
 
-import jakarta.persistence.*;
+import lombok.Data;
 
-@Entity
-/*@Data
-@NoArgsConstructor
-@AllArgsConstructor
-*/
+@Data
 public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-
-	private String title;
+    private String title;
     private String author;
     private double price;
-
-    public Book() {}
-    
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
@@ -44,4 +32,6 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+    
+    
 }
