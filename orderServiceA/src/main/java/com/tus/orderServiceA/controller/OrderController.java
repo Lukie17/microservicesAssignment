@@ -20,20 +20,24 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    // CREATE ORDER (calls Book Service)
     @PostMapping
     public Order create(@RequestBody Order order) {
 
+        System.out.println("👉 Controller HIT");
+
         Book book = orderService.getBook(order.getBookId());
 
-        if (book == null) {
-            throw new RuntimeException("Book not found");
+        System.out.println("👉 Book returned: " + book);
+
+        if (book.getId() == null) {
+            System.out.println("🔥 Using fallback - book service unavailable");
+            return repo.save(order);
         }
 
         return repo.save(order);
     }
 
-    // GET ALL
+    // GETALL
     @GetMapping
     public List<Order> getAll() {
         return repo.findAll();

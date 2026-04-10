@@ -3,6 +3,7 @@ package com.tus.bookServiceB.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.tus.bookServiceB.entity.Book;
@@ -26,8 +27,10 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Book getById(@PathVariable Long id) {
-        return repo.findById(id).orElseThrow();
+    public ResponseEntity<Book> getById(@PathVariable Long id) {
+        return repo.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
