@@ -42,13 +42,13 @@ public class OrderController {
         return repo.save(order);
     }
 
-    // READ ALL
+    // GET ALL
     @GetMapping
     public List<Order> getAll() {
         return repo.findAll();
     }
     
-    // READ ONE
+    // GET ONE
     @GetMapping("/{id}")
     public Order getById(@PathVariable Long id) {
         return repo.findById(id).orElseThrow();

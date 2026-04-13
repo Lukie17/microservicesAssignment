@@ -18,7 +18,6 @@ public class JwtFilter extends GenericFilter {
 
 		String header = req.getHeader("Authorization");
 
-		// Allow auth endpoint always
 		if (req.getRequestURI().contains("/auth")) {
 			chain.doFilter(request, response);
 			return;
