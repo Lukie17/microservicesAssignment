@@ -8,7 +8,13 @@ spring:
               uri: lb://BOOKSERVICEB
               predicates:
                 - Path=/books/**
+
             - id: order-service
               uri: lb://ORDERSERVICEA
               predicates:
                 - Path=/orders/**
+
+            - id: auth-service
+              uri: lb://ORDERSERVICEA
+              predicates:
+                - Path=/auth/**

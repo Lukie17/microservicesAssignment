@@ -18,6 +18,8 @@ public class OrderService {
 
     @CircuitBreaker(name = "bookService", fallbackMethod = "fallbackBook")
     public Book getBook(Long bookId) {
+    	System.out.println("➡️ Calling BookService for bookId: " + bookId);
+    	
         return restTemplate.getForObject(
                 "http://bookserviceb/books/" + bookId,
                 Book.class
@@ -25,7 +27,10 @@ public class OrderService {
     }
 
     public Book fallbackBook(Long bookId, Throwable t) {
-        System.out.println("Book service is DOWN!");
-        return new Book();
+        //System.out.println("Book service is DOWN!");
+    	System.out.println("🚨 FALLBACK triggered for bookId: " + bookId);
+        System.out.println("Reason: " + t.getMessage());
+    	
+    	return new Book();
     }
 }
