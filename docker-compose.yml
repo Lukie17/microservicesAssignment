@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  orderservicea:
+    build: ./orderServiceA
+    ports:
+      - "8084:8083"
