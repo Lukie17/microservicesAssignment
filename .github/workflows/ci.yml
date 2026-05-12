@@ -23,5 +23,5 @@ jobs:
 
       - name: Build and Run Tests
         run: |
-	 cd orderServiceA
-	 mvn clean test
+          cd orderServiceA
+          mvn clean test
