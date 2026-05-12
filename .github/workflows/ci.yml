@@ -25,3 +25,12 @@ jobs:
         run: |
           cd orderServiceA
           mvn clean test
+
+      - name: SonarCloud Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          cd orderServiceA
+	  mvn verify sonar:sonar \
+	  -Dsonar.projectKey=Lukie17_microservicesAssignment \
+          -Dsonar.organization=lukie17
