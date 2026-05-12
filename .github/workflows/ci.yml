@@ -22,4 +22,6 @@ jobs:
           java-version: '17'
 
       - name: Build and Run Tests
-        run: mvn clean test
+        run: |
+	 cd orderServiceA
+	 mvn clean test
